@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from sandbox import send_message
+from util.sandbox import send_message
 
 app = FastAPI()
 
