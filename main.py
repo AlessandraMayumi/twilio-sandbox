@@ -15,9 +15,9 @@ async def receive_message_from_sandbox(request: Request):
     msg = params.get('Body')
 
     col = connect()
-    if not col.find_one(filter={'from':sender}):
+    if not col.find_one(filter={'from': sender}):
         col.insert_one({'from': sender, 'to': receiver, 'msg': [msg]})
-    col.update_one({'from': sender}, {'$push': {msg}})
+    col.update_one({'from': sender}, {'$push': {'msg': msg}})
 
     resp = MessagingResponse()
     response_msg = resp.message()
