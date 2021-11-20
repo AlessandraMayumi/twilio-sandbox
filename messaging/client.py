@@ -10,11 +10,11 @@ auth_token = os.getenv('AUTH_TOKEN')
 client = Client(account_sid, auth_token)
 
 
-def send_message():
+def send_message(receiver_number):
     message = client.messages.create(
         from_='whatsapp:+14155238886',
-        body='Hello Twilio Client',
-        to='whatsapp:+5519989711675'
+        body=f'Hello from Twilio',
+        to='whatsapp:+' + receiver_number
     )
 
     print(message.sid)
