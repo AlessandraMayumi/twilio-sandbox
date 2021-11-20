@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 from twilio.twiml.messaging_response import MessagingResponse
 
 from db.conn import connect
@@ -21,9 +21,9 @@ async def receive_message_from_sandbox(request: Request):
 
     resp = MessagingResponse()
     response_msg = resp.message()
-    response_msg.body(f'Two-way message')
+    response_msg.body('Two-way message')
 
-    return str(resp)
+    return Response(content=str(resp), media_type="application/xml")
 
 
 if __name__ == "__main__":
